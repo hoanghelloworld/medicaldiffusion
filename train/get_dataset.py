@@ -39,10 +39,11 @@ def get_dataset(cfg):
             root_dir=cfg.dataset.root_dir, augmentation=True)
         sampler = None
         return train_dataset, val_dataset, sampler
-    if cfg.dataset.name == 'DEFAULT':
+    if cfg.dataset.name == 'default':  # Changed 'DEFAULT' to 'default'
         train_dataset = DEFAULTDataset(
             root_dir=cfg.dataset.root_dir)
         val_dataset = DEFAULTDataset(
             root_dir=cfg.dataset.root_dir)
         sampler = None
+        return train_dataset, val_dataset, sampler  # Added return statement
     raise ValueError(f'{cfg.dataset.name} Dataset is not available')
